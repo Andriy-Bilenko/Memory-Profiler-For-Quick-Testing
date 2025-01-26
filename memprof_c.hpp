@@ -1,6 +1,6 @@
 /******************************************************************************
  * Project:     Memory Profiler (For Quick Testing)
- * File:        memprof_c.h
+ * File:        memprof_c.hpp
  * Description: A simple malloc/free/calloc/realloc profiler for quick testing.
  *              This header file allows tracking memory allocations and
  *              deallocations with minimal setup, perfect for testing
@@ -12,7 +12,7 @@
  *
  *     https://www.gnu.org/licenses/gpl-3.0.html
  *
- * @file        memprof_c.h
+ * @file        memprof_c.hpp
  * @version     1.0
  * @date        2025-01-26
  * @author      Andriy Bilenko
@@ -28,8 +28,8 @@
  * 4. Call `profilerReset()` to restart / clean-up the profiler.
  ******************************************************************************/
 
-#ifndef MEMPROF_C_H
-#define MEMPROF_C_H
+#ifndef MEMPROF_C_HPP
+#define MEMPROF_C_HPP
 
 #include <dlfcn.h>
 #include <stdbool.h>
@@ -38,6 +38,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <mutex>
 
 /**
  * @brief MAX_ALLOCATIONS_TRACKING
@@ -49,8 +50,6 @@ struct AllocationInfo {
 	void* pointer;
 	size_t size;
 };
-
-extern AllocationInfo allocations[MAX_ALLOCATIONS_TRACKING];
 
 // Overriding function declarations
 void* malloc(size_t size);
@@ -88,4 +87,4 @@ void printMemoryUsage();
  */
 void profilerReset();
 
-#endif	// MEMPROF_C_H
+#endif	// MEMPROF_C_HPP

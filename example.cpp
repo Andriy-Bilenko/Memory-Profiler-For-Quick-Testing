@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 
-#include "memprof_c.h"
+#include "memprof_c.hpp"
 
 void useVector() {
 	std::vector<int> vec;
