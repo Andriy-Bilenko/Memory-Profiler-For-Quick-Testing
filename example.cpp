@@ -14,6 +14,20 @@ void useVector() {
 }
 
 int main() {
+	// Test0 (works even with new/delete)
+	std::cout << "TEST0: start.\r\n";
+	enableMemoryLogging(true);
+	printMemoryUsage();
+
+	int* aaa = new int(12);
+	printMemoryUsage();
+	delete aaa;
+	aaa = nullptr;
+
+	printMemoryUsage();
+	profilerReset();
+	std::cout << "TEST0: end.\r\n";
+
 	// Test1
 	std::cout << "TEST1: start.\r\n";
 	enableMemoryLogging(true);
