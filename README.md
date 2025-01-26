@@ -20,6 +20,7 @@ The profiler is **written in C**, making it compatible with both C and C++ proje
 - **Simple Integration**: Just include `memprof_c.c` and `memprof_c.h` in your project.  
 - **Ease of Use**: Plug it into your project, include the header, and track memory allocations in a few lines of code (see `example.cpp` and documentation in the header file).  
 - **C++ Friendly**: Works seamlessly with C++ code where standard memory allocation operators (`new`, `delete`) seemingly aren't used.  
+- **Multithreading Support**: Now supports multi-threaded environments, ensuring thread-safe memory tracking using mutexes.
 
 ---
 
@@ -27,7 +28,7 @@ The profiler is **written in C**, making it compatible with both C and C++ proje
 
 - **Not Suitable for Production**: The profiler adds overhead and overrides core memory allocation functions.
 - **Limited Tracking**: Only tracks up to a predefined number of allocations (`MAX_ALLOCATIONS_TRACKING`).
-- **Non-Thread-Safe**: Current implementation does not handle multi-threaded environments.
+- **Thread-Safety Introduced**: The implementation now uses mutexes for thread synchronization, but there may still be some minimal performance impact in multi-threaded scenarios. Ensure you understand the overhead of thread synchronization if using this in performance-critical code.
 
 
 
